@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import SnapKit
 
-class ViewController: UIViewController {
+
+class OffersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        title = "Промо билеты"
     }
-
-
 }
+
+
+
 
