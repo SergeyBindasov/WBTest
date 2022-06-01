@@ -11,39 +11,46 @@ import SnapKit
 class FlightCellTableViewCell: UITableViewCell {
     
     private lazy var innerView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 40, height: 240))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 30, height: 220))
         view.layer.cornerRadius = 14
         return view
     }()
     
     private lazy var departureLabel: UILabel = {
         let label = UILabel()
-        label.text = "Москва"
-        label.font = UIFont(name: "Montserrat-SemiBold", size: 28)
+        label.font = UIFont(name: "Montserrat-Bold", size: 20)
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         return label
     }()
     
     private lazy var destinationLabel: UILabel = {
         let label = UILabel()
-        label.text = "Cочи"
-        label.font = UIFont(name: "Montserrat-SemiBold", size: 28)
+        label.font = UIFont(name: "Montserrat-Bold", size: 20)
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         return label
     }()
     
+    private lazy var horStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.addArrangedSubview(departureLabel)
+        stack.addArrangedSubview(destinationLabel)
+        stack.distribution = .equalSpacing
+        stack.axis = .horizontal
+        return stack
+    }()
+    
     private lazy var departureCityCode: UILabel = {
         let label = UILabel()
-        label.text = "MOW"
-        label.font = UIFont(name: "Montserrat-Medium", size: 20)
+        label.font = UIFont(name: "Montserrat-SemiBold", size: 20)
         label.textColor = .white.withAlphaComponent(0.8)
         return label
     }()
     
     private lazy var destinationCityCode: UILabel = {
         let label = UILabel()
-        label.text = "PEE"
-        label.font = UIFont(name: "Montserrat-Medium", size: 20)
+        label.font = UIFont(name: "Montserrat-SemiBold", size: 20)
         label.textColor = .white.withAlphaComponent(0.8)
         return label
     }()
@@ -56,7 +63,6 @@ class FlightCellTableViewCell: UITableViewCell {
     
     private lazy var departureDate: UILabel = {
         let label = UILabel()
-        label.text = "Ср. 26.07.2022"
         label.font = UIFont(name: "Montserrat-Medium", size: 16)
         label.textColor = .white
         return label
@@ -64,7 +70,6 @@ class FlightCellTableViewCell: UITableViewCell {
     
     private lazy var departureTime: UILabel = {
         let label = UILabel()
-        label.text = "03:00"
         label.font = UIFont(name: "Montserrat-Medium", size: 16)
         label.textColor = .white
         return label
@@ -72,7 +77,6 @@ class FlightCellTableViewCell: UITableViewCell {
     
     private lazy var returnDate: UILabel = {
         let label = UILabel()
-        label.text = "Сб. 29.07.2022"
         label.font = UIFont(name: "Montserrat-Medium", size: 16)
         label.textColor = .white
         return label
@@ -80,7 +84,6 @@ class FlightCellTableViewCell: UITableViewCell {
     
     private lazy var returnTime: UILabel = {
         let label = UILabel()
-        label.text = "13:00"
         label.font = UIFont(name: "Montserrat-Medium", size: 16)
         label.textColor = .white
         return label
@@ -88,8 +91,7 @@ class FlightCellTableViewCell: UITableViewCell {
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "5 999 ₽"
-        label.font = UIFont(name: "Montserrat-SemiBold", size: 32)
+        label.font = UIFont(name: "Montserrat-SemiBold", size: 26)
         label.textColor = .white
         return label
     }()
@@ -118,6 +120,19 @@ class FlightCellTableViewCell: UITableViewCell {
 
 extension FlightCellTableViewCell {
     
+    func updateCell(with flight: FlightModel) {
+        departureLabel.text = flight.departureCity
+        destinationLabel.text = flight.destinationCity
+        departureCityCode.text = flight.departureCode.uppercased()
+        destinationCityCode.text = flight.destinationCode.uppercased()
+        departureDate.text = flight.departureDate
+        departureTime.text = flight.detaprureTime
+        returnDate.text = flight.arrivalDate
+        returnTime.text = flight.arrivalTime
+        priceLabel.text = flight.price + " " + "₽"
+        
+    }
+    
     @objc func likeButtonTapped() {
         if likeButton.image == UIImage(systemName: "suit.heart") {
         likeButton.image = UIImage(systemName: "suit.heart.fill")
@@ -131,31 +146,29 @@ extension FlightCellTableViewCell {
        setHorizontalGradientColor(innerView)
         
         contentView.addSubviews(innerView)
-        innerView.addSubviews(departureLabel, destinationLabel, departureCityCode,destinationCityCode, flightImg, departureDate, departureTime, returnDate, returnTime, priceLabel, likeButton)
+        innerView.addSubviews(horStackView, departureCityCode,destinationCityCode, flightImg, departureDate, departureTime, returnDate, returnTime, priceLabel, likeButton)
     
         innerView.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().offset(20)
-            make.trailing.bottom.equalToSuperview().offset(-20)
-            make.height.equalTo(240)
+            
+            make.top.equalToSuperview().offset(15)
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.bottom.equalToSuperview().offset(-15)
+            make.height.equalTo(220)
         }
 
-        departureLabel.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview().offset(18)
-        }
-
-        destinationLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18)
+        horStackView.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().offset(18)
             make.trailing.equalToSuperview().offset(-18)
         }
         
         departureCityCode.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(18)
-            make.top.equalTo(departureLabel.snp.bottom).offset(6)
+            make.top.equalTo(horStackView.snp.bottom).offset(6)
         }
         
         destinationCityCode.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-18)
-            make.top.equalTo(destinationLabel.snp.bottom).offset(6)
+            make.top.equalTo(horStackView.snp.bottom).offset(6)
         }
         
         flightImg.snp.makeConstraints { make in
@@ -191,8 +204,7 @@ extension FlightCellTableViewCell {
         likeButton.snp.makeConstraints { make in
             make.centerX.equalTo(departureTime.snp.centerX)
             make.centerY.equalTo(priceLabel.snp.centerY)
-            make.width.height.lessThanOrEqualTo(40)
+            make.width.height.lessThanOrEqualTo(70)
         }
-        
 }
 }

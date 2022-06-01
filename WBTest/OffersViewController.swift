@@ -11,6 +11,10 @@ import SnapKit
 
 class OffersViewController: UIViewController {
     
+    let network = NetworkManager()
+    var currentFlights: [FlightModel] = []
+    
+    
     private lazy var table: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
         tv.backgroundColor = .white
@@ -25,17 +29,31 @@ class OffersViewController: UIViewController {
         super.viewDidLoad()
         title = "Промо билеты"
         setupLayout()
+        network.delegate = self
+        network.performRequest()
     }
 }
+//MARK: - UpdateFlights
+extension OffersViewController: FlightsDelegate {
+    func didUpdateFlights(_ networkManager: NetworkManager, flights: [FlightModel]) {
+        for flight in flights {
+            currentFlights.append(flight)
+            table.reloadData()
+        }
+    }
+    
+    
+}
+
 //MARK: - TableViewMethods
 extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return currentFlights.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FlightCellTableViewCell.self), for: indexPath) as! FlightCellTableViewCell
-       
+        cell.updateCell(with: currentFlights[indexPath.row])
         return cell
     }
     

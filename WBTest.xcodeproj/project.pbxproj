@@ -17,6 +17,12 @@
 		A50C8C832846435A00811936 /* FlightCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50C8C822846435A00811936 /* FlightCellTableViewCell.swift */; };
 		A50C8C8728464A0E00811936 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A50C8C8528464A0E00811936 /* Montserrat-Medium.ttf */; };
 		A50C8C8A28464ADD00811936 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A50C8C8928464ADD00811936 /* Montserrat-SemiBold.ttf */; };
+		A56F815E2847A22A00BF7953 /* FlightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F815D2847A22A00BF7953 /* FlightModel.swift */; };
+		A56F81612847A33F00BF7953 /* FlightData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81602847A33F00BF7953 /* FlightData.swift */; };
+		A56F81632847A42E00BF7953 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81622847A42E00BF7953 /* NetworkManager.swift */; };
+		A56F81652847A82300BF7953 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81642847A82300BF7953 /* Help.swift */; };
+		A56F81672847B51200BF7953 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81662847B51200BF7953 /* Protocols.swift */; };
+		A56F81692847C86E00BF7953 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A56F81682847C86E00BF7953 /* Montserrat-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		A50C8C822846435A00811936 /* FlightCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightCellTableViewCell.swift; sourceTree = "<group>"; };
 		A50C8C8528464A0E00811936 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		A50C8C8928464ADD00811936 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		A56F815D2847A22A00BF7953 /* FlightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightModel.swift; sourceTree = "<group>"; };
+		A56F81602847A33F00BF7953 /* FlightData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightData.swift; sourceTree = "<group>"; };
+		A56F81622847A42E00BF7953 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A56F81642847A82300BF7953 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
+		A56F81662847B51200BF7953 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		A56F81682847C86E00BF7953 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		A96C8E48B4A45A79F752D230 /* Pods_WBTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WBTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC2578840D7569A96BAF9213 /* Pods-WBTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBTest.debug.xcconfig"; path = "Target Support Files/Pods-WBTest/Pods-WBTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,11 +94,14 @@
 				A50C8C6E28460C9D00811936 /* SceneDelegate.swift */,
 				A50C8C7028460C9D00811936 /* OffersViewController.swift */,
 				A50C8C822846435A00811936 /* FlightCellTableViewCell.swift */,
+				A56F815F2847A32900BF7953 /* Models */,
 				A50C8C8828464A3D00811936 /* Fonts */,
 				A50C8C7528460CA000811936 /* Assets.xcassets */,
 				A50C8C7728460CA000811936 /* LaunchScreen.storyboard */,
 				A50C8C7A28460CA000811936 /* Info.plist */,
 				A50C8C802846421200811936 /* SupportFile.swift */,
+				A56F81642847A82300BF7953 /* Help.swift */,
+				A56F81662847B51200BF7953 /* Protocols.swift */,
 			);
 			path = WBTest;
 			sourceTree = "<group>";
@@ -94,10 +109,21 @@
 		A50C8C8828464A3D00811936 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				A56F81682847C86E00BF7953 /* Montserrat-Bold.ttf */,
 				A50C8C8528464A0E00811936 /* Montserrat-Medium.ttf */,
 				A50C8C8928464ADD00811936 /* Montserrat-SemiBold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A56F815F2847A32900BF7953 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A56F815D2847A22A00BF7953 /* FlightModel.swift */,
+				A56F81602847A33F00BF7953 /* FlightData.swift */,
+				A56F81622847A42E00BF7953 /* NetworkManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E1D69C0D950BB2573FA6BBC2 /* Frameworks */ = {
@@ -168,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56F81692847C86E00BF7953 /* Montserrat-Bold.ttf in Resources */,
 				A50C8C7928460CA000811936 /* LaunchScreen.storyboard in Resources */,
 				A50C8C8728464A0E00811936 /* Montserrat-Medium.ttf in Resources */,
 				A50C8C8A28464ADD00811936 /* Montserrat-SemiBold.ttf in Resources */,
@@ -225,8 +252,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50C8C7128460C9D00811936 /* OffersViewController.swift in Sources */,
+				A56F81612847A33F00BF7953 /* FlightData.swift in Sources */,
+				A56F81652847A82300BF7953 /* Help.swift in Sources */,
 				A50C8C812846421200811936 /* SupportFile.swift in Sources */,
 				A50C8C6D28460C9D00811936 /* AppDelegate.swift in Sources */,
+				A56F81672847B51200BF7953 /* Protocols.swift in Sources */,
+				A56F81632847A42E00BF7953 /* NetworkManager.swift in Sources */,
+				A56F815E2847A22A00BF7953 /* FlightModel.swift in Sources */,
 				A50C8C6F28460C9D00811936 /* SceneDelegate.swift in Sources */,
 				A50C8C832846435A00811936 /* FlightCellTableViewCell.swift in Sources */,
 			);
