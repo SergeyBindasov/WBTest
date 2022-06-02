@@ -10,13 +10,14 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    let networkManager = NetworkManager()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
-        let offersVC = OffersViewController()
+        let offersVC = OffersViewController(network: networkManager)
         let navigation = UINavigationController(rootViewController: offersVC)
         window?.rootViewController = navigation
         window?.windowScene = windowScene

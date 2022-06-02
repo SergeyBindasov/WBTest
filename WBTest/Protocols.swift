@@ -10,3 +10,4 @@ import Foundation
 protocol FlightsDelegate {
     func didUpdateFlights(_ networkManager: NetworkManager, flights: [FlightModel])
 }
+

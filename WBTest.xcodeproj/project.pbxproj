@@ -23,6 +23,8 @@
 		A56F81652847A82300BF7953 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81642847A82300BF7953 /* Help.swift */; };
 		A56F81672847B51200BF7953 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81662847B51200BF7953 /* Protocols.swift */; };
 		A56F81692847C86E00BF7953 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A56F81682847C86E00BF7953 /* Montserrat-Bold.ttf */; };
+		A56F816B2847CF2200BF7953 /* FlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F816A2847CF2200BF7953 /* FlightViewController.swift */; };
+		A5D6FF5E2847D52200B4A173 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D6FF5D2847D52200B4A173 /* DetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		A56F81642847A82300BF7953 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		A56F81662847B51200BF7953 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A56F81682847C86E00BF7953 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		A56F816A2847CF2200BF7953 /* FlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightViewController.swift; sourceTree = "<group>"; };
+		A5D6FF5D2847D52200B4A173 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		A96C8E48B4A45A79F752D230 /* Pods_WBTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WBTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC2578840D7569A96BAF9213 /* Pods-WBTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBTest.debug.xcconfig"; path = "Target Support Files/Pods-WBTest/Pods-WBTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,8 +96,9 @@
 			children = (
 				A50C8C6C28460C9D00811936 /* AppDelegate.swift */,
 				A50C8C6E28460C9D00811936 /* SceneDelegate.swift */,
-				A50C8C7028460C9D00811936 /* OffersViewController.swift */,
-				A50C8C822846435A00811936 /* FlightCellTableViewCell.swift */,
+				A56F81662847B51200BF7953 /* Protocols.swift */,
+				A5D6FF5F2847D52D00B4A173 /* Controllers */,
+				A5D6FF602847D53D00B4A173 /* Views */,
 				A56F815F2847A32900BF7953 /* Models */,
 				A50C8C8828464A3D00811936 /* Fonts */,
 				A50C8C7528460CA000811936 /* Assets.xcassets */,
@@ -101,7 +106,6 @@
 				A50C8C7A28460CA000811936 /* Info.plist */,
 				A50C8C802846421200811936 /* SupportFile.swift */,
 				A56F81642847A82300BF7953 /* Help.swift */,
-				A56F81662847B51200BF7953 /* Protocols.swift */,
 			);
 			path = WBTest;
 			sourceTree = "<group>";
@@ -124,6 +128,24 @@
 				A56F81622847A42E00BF7953 /* NetworkManager.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A5D6FF5F2847D52D00B4A173 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A56F816A2847CF2200BF7953 /* FlightViewController.swift */,
+				A50C8C7028460C9D00811936 /* OffersViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A5D6FF602847D53D00B4A173 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A5D6FF5D2847D52200B4A173 /* DetailsView.swift */,
+				A50C8C822846435A00811936 /* FlightCellTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E1D69C0D950BB2573FA6BBC2 /* Frameworks */ = {
@@ -253,8 +275,10 @@
 			files = (
 				A50C8C7128460C9D00811936 /* OffersViewController.swift in Sources */,
 				A56F81612847A33F00BF7953 /* FlightData.swift in Sources */,
+				A56F816B2847CF2200BF7953 /* FlightViewController.swift in Sources */,
 				A56F81652847A82300BF7953 /* Help.swift in Sources */,
 				A50C8C812846421200811936 /* SupportFile.swift in Sources */,
+				A5D6FF5E2847D52200B4A173 /* DetailsView.swift in Sources */,
 				A50C8C6D28460C9D00811936 /* AppDelegate.swift in Sources */,
 				A56F81672847B51200BF7953 /* Protocols.swift in Sources */,
 				A56F81632847A42E00BF7953 /* NetworkManager.swift in Sources */,

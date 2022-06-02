@@ -11,8 +11,17 @@ import SnapKit
 
 class OffersViewController: UIViewController {
     
-    let network = NetworkManager()
+    let network: NetworkManager
     var currentFlights: [FlightModel] = []
+    
+    init(network: NetworkManager) {
+        self.network = network
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
     
     
     private lazy var table: UITableView = {
@@ -24,6 +33,8 @@ class OffersViewController: UIViewController {
         
         return tv
     }()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +68,11 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let flightDetailsVC = FlightViewController(flight: currentFlights[indexPath.row])
+        navigationController?.show(flightDetailsVC, sender: nil)
+    }
+    
     
     
 }
@@ -73,8 +89,3 @@ extension OffersViewController {
         }
     }
 }
-
-
-
-
-

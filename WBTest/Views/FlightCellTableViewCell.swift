@@ -103,7 +103,6 @@ class FlightCellTableViewCell: UITableViewCell {
         like.contentMode = .scaleAspectFill
         return like
     }()
-    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -130,7 +129,6 @@ extension FlightCellTableViewCell {
         returnDate.text = flight.arrivalDate
         returnTime.text = flight.arrivalTime
         priceLabel.text = flight.price + " " + "₽"
-        
     }
     
     @objc func likeButtonTapped() {
