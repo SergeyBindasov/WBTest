@@ -10,6 +10,9 @@ import SnapKit
 
 class FlightCellTableViewCell: UITableViewCell {
     
+    var delegate: LikesOnCellDelegate?
+    var index: IndexPath?
+    
     private lazy var innerView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 30, height: 220))
         view.layer.cornerRadius = 14
@@ -96,20 +99,19 @@ class FlightCellTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var likeButton: UIImageView = {
-        let like = UIImageView()
-        like.image = UIImage(systemName: "suit.heart")
+    private lazy var likeButton: UIButton = {
+        let like = UIButton()
+        like.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+        like.setImage(UIImage(systemName: "suit.heart.fill"), for: .selected)
         like.tintColor = .white
-        like.contentMode = .scaleAspectFill
+        like.contentMode = .scaleAspectFit
+        like.addTarget(self, action: #selector(cellLikePressed), for: .touchUpInside)
         return like
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         setupLayout()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(likeButtonTapped))
-        likeButton.addGestureRecognizer(tap)
-        likeButton.isUserInteractionEnabled = true
     }
     
     required init?(coder: NSCoder) {
@@ -129,14 +131,16 @@ extension FlightCellTableViewCell {
         returnDate.text = flight.arrivalDate
         returnTime.text = flight.arrivalTime
         priceLabel.text = flight.price + " " + "₽"
+        likeButton.isSelected = flight.isLiked
     }
     
-    @objc func likeButtonTapped() {
-        if likeButton.image == UIImage(systemName: "suit.heart") {
-        likeButton.image = UIImage(systemName: "suit.heart.fill")
-        } else {
-            likeButton.image = UIImage(systemName: "suit.heart")
-        }
+    func updateLikes(with model: FlightModel) {
+        likeButton.isSelected = model.isLiked
+    }
+    
+    @objc func cellLikePressed(sender: UIButton)  {
+        sender.isSelected.toggle()
+        delegate?.onLikeClick(isLiked: sender.isSelected, cell: self)
     }
     
     func setupLayout() {

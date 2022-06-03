@@ -47,7 +47,10 @@ class NetworkManager {
                                          arrivalDate: help.dateFromISO(iso: flight.endDate),
                                          arrivalTime: help.timeFromISO(iso: flight.endDate),
                                          price: help.numberSeparator(number: flight.price),
-                                         id: flight.searchToken)
+                                         id: flight.searchToken,
+                                         index: 0,
+                                         isLiked: false
+                )
                 flights.append(flight)
             }
             return flights

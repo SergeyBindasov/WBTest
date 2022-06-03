@@ -18,4 +18,6 @@ struct FlightModel {
     var arrivalTime: String
     var price: String
     var id: String
+    var index: Int
+    var isLiked: Bool
 }

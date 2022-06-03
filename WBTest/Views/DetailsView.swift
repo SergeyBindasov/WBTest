@@ -11,6 +11,8 @@ import SnapKit
 
 class DetailsView: UIView {
     
+    var delegate: LikesOnCellDelegate?
+    
     private lazy var container: UIView = {
         let container = UIView()
         container.backgroundColor = .white
@@ -155,8 +157,9 @@ class DetailsView: UIView {
     private lazy var likeButton: UIButton = {
         let like = UIButton()
         like.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+        like.setImage(UIImage(systemName: "suit.heart.fill"), for: .selected)
         like.tintColor = .white
-        like.contentMode = .scaleAspectFill
+        like.contentMode = .scaleAspectFit
         like.addTarget(self, action: #selector(likePressed), for: .touchUpInside)
         return like
     }()
@@ -182,8 +185,9 @@ class DetailsView: UIView {
 
 extension DetailsView {
     
-    @objc func likePressed(sender: UIButton) {
-    
+     @objc func likePressed(sender: UIButton) {
+         sender.isSelected.toggle()
+         delegate?.onLikeClick(isLiked: sender.isSelected, cell: nil)
     }
     
     func updateUI(with flight: FlightModel) {
@@ -198,6 +202,7 @@ extension DetailsView {
         takeoffDate.text = flight.departureDate
         returnTime.text = flight.arrivalTime
         returnDate.text = flight.arrivalDate
+        likeButton.isSelected = flight.isLiked
     }
     
     func setupLayout() {
@@ -206,7 +211,6 @@ extension DetailsView {
         container.addSubviews(routeTitle, mainView, priceLabel, buyButton)
         mainView.addSubviews(planeImg, departureLabel, arrivalLabel, arrivalCode, departureCode, cityOne, cityTwo, takeoffLabel, takeoffTime, takeoffDate, returnLabel, returnDate, returnTime, returnImg, flightIdLabel, flightId, likeButton)
 
-        
         container.snp.makeConstraints { make in
             make.edges.width.equalTo(self.safeAreaLayoutGuide)
             make.centerX.equalToSuperview()

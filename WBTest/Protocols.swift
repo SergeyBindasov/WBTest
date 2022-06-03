@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
-protocol FlightsDelegate {
+protocol FlightsDelegate: AnyObject {
     func didUpdateFlights(_ networkManager: NetworkManager, flights: [FlightModel])
 }
 
+protocol LikesOnCellDelegate: AnyObject {
+    func onLikeClick(isLiked: Bool, cell: UITableViewCell?) 
+}
