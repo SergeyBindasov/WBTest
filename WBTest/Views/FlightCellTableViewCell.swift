@@ -16,6 +16,8 @@ class FlightCellTableViewCell: UITableViewCell {
     private lazy var innerView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 30, height: 220))
         view.layer.cornerRadius = 14
+        setHorizontalGradientColor(view)
+        applyShadow(view)
         return view
     }()
     
@@ -104,7 +106,7 @@ class FlightCellTableViewCell: UITableViewCell {
         like.setImage(UIImage(systemName: "suit.heart"), for: .normal)
         like.setImage(UIImage(systemName: "suit.heart.fill"), for: .selected)
         like.tintColor = .white
-        like.contentMode = .scaleAspectFit
+        like.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25), forImageIn: .normal)
         like.addTarget(self, action: #selector(cellLikePressed), for: .touchUpInside)
         return like
     }()
@@ -145,8 +147,7 @@ extension FlightCellTableViewCell {
     
     func setupLayout() {
         contentView.backgroundColor = .white
-       setHorizontalGradientColor(innerView)
-        
+      
         contentView.addSubviews(innerView)
         innerView.addSubviews(horStackView, departureCityCode,destinationCityCode, flightImg, departureDate, departureTime, returnDate, returnTime, priceLabel, likeButton)
     
@@ -206,7 +207,6 @@ extension FlightCellTableViewCell {
         likeButton.snp.makeConstraints { make in
             make.centerX.equalTo(departureTime.snp.centerX)
             make.centerY.equalTo(priceLabel.snp.centerY)
-            make.width.height.lessThanOrEqualTo(70)
         }
 }
 }

@@ -32,4 +32,12 @@ extension UIView {
         gradientLayer.cornerRadius = 14
         view.layer.addSublayer(gradientLayer)
     }
+    
+    func applyShadow(_ view: UIView) {
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowRadius = 7
+        view.layer.shadowOffset = CGSize(width: 3, height: 3)
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+    }
 }

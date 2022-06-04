@@ -12,7 +12,7 @@ class OffersViewController: UIViewController {
     
     let network: NetworkManager
     var currentFlights: [FlightModel] = []
-
+    
     init(network: NetworkManager) {
         self.network = network
         super.init(nibName: nil, bundle: nil)
@@ -34,10 +34,12 @@ class OffersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Промо билеты"
+    
         setupLayout()
         network.delegate = self
         network.performRequest()
     }
+
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -80,7 +82,7 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let flightDetailsVC = FlightViewController(flight: currentFlights[indexPath.row])
-        flightDetailsVC.callBack = { [weak self] Int, Bool in
+        flightDetailsVC.likeCallBack = { [weak self] Int, Bool in
             self?.currentFlights[Int].isLiked = Bool
         }
         navigationController?.show(flightDetailsVC, sender: nil)
@@ -95,7 +97,6 @@ extension OffersViewController {
         
         table.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
-            
         }
     }
 }

@@ -6,21 +6,26 @@
 //
 
 import Foundation
+import IHProgressHUD
 
 class NetworkManager {
     
     let help = DateHelp()
-    
+        
     var delegate: FlightsDelegate?
 
     func performRequest() {
+        IHProgressHUD.show(withStatus: "Ищем лучшие билеты")
         if let url = URL(string: "https://travel.wildberries.ru/statistics/v1/cheap") {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { data, response, error in
+            let configuration = URLSessionConfiguration.default
+            let session = URLSession(configuration: configuration)
+            var request = URLRequest(url: url)
+            let task = session.dataTask(with: request) { data, response, error in
                 if error != nil {
                     print(error!)
                 }
                 if let safeData = data {
+                    IHProgressHUD.dismiss()
                     if let flightsList = self.parseFlightJSON(flightData: safeData) {
                         DispatchQueue.main.async {
                             self.delegate?.didUpdateFlights(self, flights: flightsList)
@@ -49,8 +54,7 @@ class NetworkManager {
                                          price: help.numberSeparator(number: flight.price),
                                          id: flight.searchToken,
                                          index: 0,
-                                         isLiked: false
-                )
+                                         isLiked: false)
                 flights.append(flight)
             }
             return flights

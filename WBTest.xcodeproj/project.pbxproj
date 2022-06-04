@@ -96,7 +96,6 @@
 			children = (
 				A50C8C6C28460C9D00811936 /* AppDelegate.swift */,
 				A50C8C6E28460C9D00811936 /* SceneDelegate.swift */,
-				A56F81662847B51200BF7953 /* Protocols.swift */,
 				A5D6FF5F2847D52D00B4A173 /* Controllers */,
 				A5D6FF602847D53D00B4A173 /* Views */,
 				A56F815F2847A32900BF7953 /* Models */,
@@ -104,8 +103,7 @@
 				A50C8C7528460CA000811936 /* Assets.xcassets */,
 				A50C8C7728460CA000811936 /* LaunchScreen.storyboard */,
 				A50C8C7A28460CA000811936 /* Info.plist */,
-				A50C8C802846421200811936 /* SupportFile.swift */,
-				A56F81642847A82300BF7953 /* Help.swift */,
+				A5F1294C284B7D5D00005986 /* SupportFiles */,
 			);
 			path = WBTest;
 			sourceTree = "<group>";
@@ -123,6 +121,7 @@
 		A56F815F2847A32900BF7953 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A56F81662847B51200BF7953 /* Protocols.swift */,
 				A56F815D2847A22A00BF7953 /* FlightModel.swift */,
 				A56F81602847A33F00BF7953 /* FlightData.swift */,
 				A56F81622847A42E00BF7953 /* NetworkManager.swift */,
@@ -146,6 +145,15 @@
 				A50C8C822846435A00811936 /* FlightCellTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A5F1294C284B7D5D00005986 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A56F81642847A82300BF7953 /* Help.swift */,
+				A50C8C802846421200811936 /* SupportFile.swift */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 		E1D69C0D950BB2573FA6BBC2 /* Frameworks */ = {

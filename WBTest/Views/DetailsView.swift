@@ -30,6 +30,7 @@ class DetailsView: UIView {
     private lazy var mainView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 30, height: 300))
         setHorizontalGradientColor(view)
+        applyShadow(view)
         return view
     }()
     
@@ -159,7 +160,7 @@ class DetailsView: UIView {
         like.setImage(UIImage(systemName: "suit.heart"), for: .normal)
         like.setImage(UIImage(systemName: "suit.heart.fill"), for: .selected)
         like.tintColor = .white
-        like.contentMode = .scaleAspectFit
+        like.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25), forImageIn: .normal)
         like.addTarget(self, action: #selector(likePressed), for: .touchUpInside)
         return like
     }()
@@ -170,6 +171,8 @@ class DetailsView: UIView {
         button.layer.cornerRadius = 12
         button.setTitle("Бронировать", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.applyShadow(button)
+        button.addTarget(self, action: #selector(bookPressed), for: .touchUpInside)
         return button
     }()
     
@@ -188,6 +191,13 @@ extension DetailsView {
      @objc func likePressed(sender: UIButton) {
          sender.isSelected.toggle()
          delegate?.onLikeClick(isLiked: sender.isSelected, cell: nil)
+    }
+    
+    @objc func bookPressed(sender: UIButton) {
+        sender.backgroundColor = UIColor(named: "button")!.withAlphaComponent(0.8)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            sender.backgroundColor = UIColor(named: "button")!
+        }
     }
     
     func updateUI(with flight: FlightModel) {

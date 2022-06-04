@@ -5,6 +5,7 @@ target 'WBTest' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 pod 'SnapKit', '~> 5.0.0'
+pod 'IHProgressHUD', :git => 'https://github.com/Swiftify-Corp/IHProgressHUD.git'
   # Pods for WBTest
 
 end

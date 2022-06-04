@@ -1,16 +1,28 @@
 PODS:
+  - IHProgressHUD (0.1.6)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - IHProgressHUD (from `https://github.com/Swiftify-Corp/IHProgressHUD.git`)
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
     - SnapKit
 
+EXTERNAL SOURCES:
+  IHProgressHUD:
+    :git: https://github.com/Swiftify-Corp/IHProgressHUD.git
+
+CHECKOUT OPTIONS:
+  IHProgressHUD:
+    :commit: c3e0cf90ba1b310073e841de7dc6ef0a2d4899e2
+    :git: https://github.com/Swiftify-Corp/IHProgressHUD.git
+
 SPEC CHECKSUMS:
+  IHProgressHUD: 3f7d9ff28d4c339d50fce7c32daa26ddfefd8703
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: a6a7878eaff3ae18037115591273d3ba187ff80f
+PODFILE CHECKSUM: ac760e79b469ca486e317672609ee0ca57154b1f
 
 COCOAPODS: 1.11.2

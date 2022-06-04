@@ -13,7 +13,7 @@ class FlightViewController: UIViewController {
     let myview = DetailsView()
     var flight: FlightModel
  
-    var callBack: ((Int, Bool) -> Void)?
+    var likeCallBack: ((Int, Bool) -> Void)?
     
     init(flight: FlightModel) {
         self.flight = flight
@@ -36,6 +36,6 @@ class FlightViewController: UIViewController {
 extension FlightViewController: LikesOnCellDelegate {
     func onLikeClick(isLiked: Bool, cell: UITableViewCell?) {
         flight.isLiked = isLiked
-        callBack?(flight.index, flight.isLiked)
+        likeCallBack?(flight.index, flight.isLiked)
     }
 }
